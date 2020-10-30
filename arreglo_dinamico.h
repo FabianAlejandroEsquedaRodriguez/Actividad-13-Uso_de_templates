@@ -13,6 +13,7 @@ class ArregloDinamico{
 
     void insertar_final(const T &s);//Aqui inserta elememtos en la posicion que marque el contador
     void insertar_inicio(const T &s);//Inserta elementos siempre en la posicion 0
+    void insertar(const T &s, size_t pos);//Insertar en una posicion valida donde existe informacion
     size_t size();//Para retornar los elementos en el arreglo
 
     void setString(const T &st);
@@ -71,6 +72,26 @@ void ArregloDinamico<T>::insertar_inicio(const T &s){
 
     arreglo[0] = s;//En la posicion 0 se va a agregar el elemento que recibe como parametro
     cont++;
+}
+
+template <class T>
+void ArregloDinamico<T>::insertar(const T &s, size_t pos){
+    if (pos >= cont){
+        cout<<"La posicion no es valida";
+        return; 
+    }
+    
+    if (cont == tam){//Si el arreglo esta lleno, se expande
+        expandir();
+    }
+
+    for (size_t i = cont; i > pos; i--){
+        arreglo[i] = arreglo[i-1];//Va a recorrer una posicion a la derecha los elementos
+    }
+
+    arreglo[pos] = s;//En la posicion pos se va a insertar el elemento que le mandamos
+    cont ++;
+    
 }
 
 template <class T>
