@@ -14,6 +14,11 @@ class ArregloDinamico{
     void insertar_final(const T &s);//Aqui inserta elememtos en la posicion que marque el contador
     void insertar_inicio(const T &s);//Inserta elementos siempre en la posicion 0
     void insertar(const T &s, size_t pos);//Insertar en una posicion valida donde existe informacion
+   
+    void eliminar_final();
+    void eliminar_inicio();
+    void eliminar(size_t pos);//Eliminar un elemento de una posicion valida
+   
     size_t size();//Para retornar los elementos en el arreglo
 
     void setString(const T &st);
@@ -92,6 +97,40 @@ void ArregloDinamico<T>::insertar(const T &s, size_t pos){
     arreglo[pos] = s;//En la posicion pos se va a insertar el elemento que le mandamos
     cont ++;
     
+}
+
+template <class T>
+void ArregloDinamico<T>::eliminar_final(){
+    if (cont == 0){
+        cout<<"El arreglo esta vacio";
+        return;
+    }
+
+    cont--;//Solo se decrementa el contador para que apunte al ultimo valor, pero no sera valido
+}
+
+template <class T>
+void ArregloDinamico<T>::eliminar_inicio(){
+    if (cont == 0){
+        cout<<"El arreglo esta vacio";
+        return;
+    }
+    for(size_t i=0; i<cont-1; i++){
+        arreglo[i] = arreglo[i+1];//Se van a recorrer los elementos una posicion a la derecha
+    }
+    cont--;
+}
+
+template <class T>
+void ArregloDinamico<T>::eliminar(size_t pos){
+    if (cont == 0){
+        cout<<"El arreglo esta vacio";
+        return;
+    }
+    for(size_t i=pos; i<cont-1; i++){
+        arreglo[i] = arreglo[i+1];
+    }
+    cont--;
 }
 
 template <class T>
