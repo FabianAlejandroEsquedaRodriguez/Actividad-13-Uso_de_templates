@@ -5,7 +5,7 @@ using namespace std;
 
 int main(){
     ArregloDinamico<string> str;//La T en la clase va a recibir strings
-    
+
     //Prueba 1 -> Insertar 4 strings al inicio y al final
     str.insertar_inicio("Prueba Numero 1");
     str.insertar_inicio("Prueba Numero 1.1");
